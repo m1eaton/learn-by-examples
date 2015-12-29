@@ -19,6 +19,9 @@ public class WebComponent extends AbstractVerticle{
         HttpServer server = vertx.createHttpServer();
         
         server.requestHandler(r -> {
+          // The lambda expression here the r is an instance of HTTPServerRequest
+          String uri = r.absoluteURI();
+          System.out.println("The absolute URI is "+uri);
           r.response().end("<h1>WebComponent verticle running in a" +
               " Vert.x 3 application</h1>");
         });
